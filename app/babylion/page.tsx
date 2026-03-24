@@ -18,16 +18,37 @@ const TIMES = Array.from({ length: 15 }, (_, i) => i + 9); // 9 to 23
 export default function BabylionPage() {
   const router = useRouter();
   const [name, setName] = useState("");
+  const [pin, setPin] = useState("");
   const [unavailableSlots, setUnavailableSlots] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const storedName = localStorage.getItem("mutsa-name");
-    if (!storedName) {
+    const storedPin = localStorage.getItem("mutsa-pin");
+    if (!storedName || !storedPin) {
       alert("로그인이 필요합니다.");
       router.push("/");
     } else {
       setName(storedName);
+      setPin(storedPin);
+
+      fetch(`/api/schedule?name=${encodeURIComponent(storedName)}&pin=${encodeURIComponent(storedPin)}`)
+        .then(async (res) => {
+          if (res.status === 401) {
+            alert("입력한 이름(Identity)의 PIN 번호가 맞지 않습니다. 다시 로그인해 주세요.");
+            localStorage.removeItem("mutsa-name");
+            localStorage.removeItem("mutsa-pin");
+            router.push("/");
+            return;
+          }
+          if (res.ok) {
+            const data = await res.json();
+            if (data && Array.isArray(data.unavailableSlots)) {
+              setUnavailableSlots(data.unavailableSlots);
+            }
+          }
+        })
+        .catch(console.error);
     }
   }, [router]);
 
@@ -45,10 +66,12 @@ export default function BabylionPage() {
       const res = await fetch("/api/schedule", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, unavailableSlots }),
+        body: JSON.stringify({ name, pin, unavailableSlots }),
       });
       if (res.ok) {
         alert("제출 완료되었습니다.");
+      } else if (res.status === 401) {
+        alert("비밀번호 불일치: 기존에 제출된 이름의 PIN 번호와 다릅니다.");
       } else {
         alert("제출에 실패했습니다. 다시 시도해 주세요.");
       }

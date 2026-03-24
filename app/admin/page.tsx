@@ -26,8 +26,13 @@ export default function AdminPage() {
   const [schedules, setSchedules] = useState<ScheduleData[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
+  
+  const [adminUnlocked, setAdminUnlocked] = useState(false);
+  const [adminPinInput, setAdminPinInput] = useState("");
 
   useEffect(() => {
+    if (!adminUnlocked) return;
+
     fetch("/api/schedule")
       .then((res) => res.json())
       .then((data) => {
@@ -43,7 +48,7 @@ export default function AdminPage() {
         console.error(err);
         setLoading(false);
       });
-  }, []);
+  }, [adminUnlocked]);
 
   const totalRespondents = schedules.length;
 
@@ -113,6 +118,54 @@ export default function AdminPage() {
 
   const selectedDetails = selectedSlot ? getSlotDetails(selectedSlot) : null;
   const selectedStr = selectedSlot ? `${getDayLabel(selectedSlot.split("-")[0])}요일 ${selectedSlot.split("-")[1]}:00` : "";
+
+  if (!adminUnlocked) {
+    return (
+      <main className="min-h-screen w-full flex items-center justify-center p-6 relative overflow-hidden bg-background">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+        <div className="w-full max-w-md z-10 space-y-8 bg-surface-container-lowest rounded-[2rem] p-8 shadow-[0_12px_32px_-4px_rgba(0,0,0,0.03)] border border-outline-variant/15">
+          <div className="flex flex-col items-center mb-6">
+            <span className="material-symbols-outlined text-4xl text-primary mb-2">admin_panel_settings</span>
+            <h2 className="font-headline font-extrabold text-2xl text-on-surface">임원진 로그인</h2>
+          </div>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-primary tracking-widest uppercase ml-1">Admin PIN</label>
+              <div className="relative">
+                <input 
+                  className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary-fixed text-on-surface placeholder:text-outline p-4 rounded-xl transition-all duration-200 outline-none font-medium text-center tracking-widest" 
+                  maxLength={4}
+                  placeholder="관리자 PIN (기본: 0000)" 
+                  type="password"
+                  inputMode="numeric" 
+                  value={adminPinInput}
+                  onChange={(e) => setAdminPinInput(e.target.value.replace(/[^0-9]/g, '').slice(0, 4))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      const correctPin = process.env.NEXT_PUBLIC_ADMIN_PIN || "0000";
+                      if (adminPinInput === correctPin) setAdminUnlocked(true);
+                      else alert("관리자 PIN 번호가 일치하지 않습니다.");
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <button onClick={() => {
+              const correctPin = process.env.NEXT_PUBLIC_ADMIN_PIN || "0000";
+              if (adminPinInput === correctPin) setAdminUnlocked(true);
+              else alert("관리자 PIN 번호가 일치하지 않습니다.");
+            }} className="w-full kinetic-gradient hover:opacity-95 text-on-primary py-4 rounded-xl font-bold shadow-[0_8px_20px_-4px_rgba(153,65,0,0.2)] active:scale-95 transition-all">
+              인증하기
+            </button>
+            <button onClick={() => router.push("/")} className="w-full py-4 text-on-surface-variant font-bold text-sm hover:bg-surface-container-high rounded-xl transition-all">
+              돌아가기
+            </button>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <div className="bg-background text-on-surface font-body w-full min-h-screen relative pb-32 overflow-x-hidden">

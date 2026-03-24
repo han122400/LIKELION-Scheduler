@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [name, setName] = useState("");
+  const [pin, setPin] = useState("");
   const router = useRouter();
 
   const handleLogin = (e: React.FormEvent) => {
@@ -13,7 +14,12 @@ export default function LoginPage() {
       alert("이름을 입력해 주세요.");
       return;
     }
+    if (pin.trim().length !== 4) {
+      alert("PIN 번호 4자리를 정확히 입력해 주세요.");
+      return;
+    }
     localStorage.setItem("mutsa-name", name.trim());
+    localStorage.setItem("mutsa-pin", pin.trim());
     router.push("/babylion");
   };
 
@@ -40,19 +46,40 @@ export default function LoginPage() {
 
         <div className="bg-surface-container-lowest rounded-[2rem] p-8 shadow-[0_12px_32px_-4px_rgba(0,0,0,0.03)] border border-outline-variant/15 space-y-6">
           <form onSubmit={handleLogin} className="space-y-4">
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-primary tracking-widest uppercase ml-1" htmlFor="username">Identity</label>
-              <div className="relative">
-                <input 
-                  className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary-fixed text-on-surface placeholder:text-outline p-4 rounded-xl transition-all duration-200 outline-none font-medium" 
-                  id="username" 
-                  placeholder="이름을 입력하세요 (예: 김멋사)" 
-                  type="text" 
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-outline-variant">
-                  <span className="material-symbols-outlined" data-icon="person">person</span>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-primary tracking-widest uppercase ml-1" htmlFor="username">Identity</label>
+                <div className="relative">
+                  <input 
+                    className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary-fixed text-on-surface placeholder:text-outline p-4 rounded-xl transition-all duration-200 outline-none font-medium" 
+                    id="username" 
+                    placeholder="이름을 입력하세요 (예: 김멋사)" 
+                    type="text" 
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-outline-variant">
+                    <span className="material-symbols-outlined" data-icon="person">person</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-primary tracking-widest uppercase ml-1" htmlFor="pin">PIN Number</label>
+                <div className="relative">
+                  <input 
+                    className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary-fixed text-on-surface placeholder:text-outline p-4 rounded-xl transition-all duration-200 outline-none font-medium" 
+                    id="pin" 
+                    maxLength={4}
+                    placeholder="PIN 번호 4자리" 
+                    type="password" 
+                    inputMode="numeric"
+                    value={pin}
+                    onChange={(e) => setPin(e.target.value.replace(/[^0-9]/g, '').slice(0, 4))}
+                  />
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-outline-variant">
+                    <span className="material-symbols-outlined" data-icon="lock">lock</span>
+                  </div>
                 </div>
               </div>
             </div>
