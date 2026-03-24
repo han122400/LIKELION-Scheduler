@@ -1,0 +1,122 @@
+
+
+<header className="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-[0_4px_12px_rgba(153,65,0,0.08)] max-w-md mx-auto">
+<div className="flex items-center justify-between px-6 py-4">
+<div className="flex items-center gap-3">
+<button className="text-orange-600 active:scale-95 duration-200 transition-colors hover:bg-orange-50 p-1 rounded-full">
+<span className="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 className="text-orange-600 font-plus-jakarta font-bold text-lg">환영합니다, 김멋사님!</h1>
+</div>
+<div className="flex items-center gap-4">
+<span className="material-symbols-outlined text-orange-600" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+</header>
+<main className="pt-24 px-6">
+
+<section className="mb-8">
+<div className="flex items-center gap-2 mb-2">
+<span className="bg-primary-container/20 text-primary font-bold text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider">Babylion Mode</span>
+</div>
+<h2 className="font-headline text-2xl font-extrabold text-on-surface tracking-tight mb-2">활동 가능 시간 설정</h2>
+<p className="text-on-surface-variant text-sm leading-relaxed">참석이 불가능한 시간을 터치해서 제외해 주세요. <br/>나머지 시간은 활동 가능 시간으로 제출됩니다.</p>
+</section>
+
+<div className="bg-surface-container-lowest rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
+
+<div className="grid grid-cols-8 border-b border-surface-container">
+<div className="h-10 border-r border-surface-container"></div>
+<div className="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">월</div>
+<div className="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">화</div>
+<div className="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">수</div>
+<div className="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">목</div>
+<div className="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">금</div>
+<div className="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">토</div>
+<div className="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">일</div>
+</div>
+
+<div className="max-h-[500px] overflow-y-auto no-scrollbar">
+<div className="grid grid-cols-8">
+
+
+<div className="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">09:00</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+
+<div className="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">10:00</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-surface-container-high flex items-center justify-center cursor-pointer">
+<span className="material-symbols-outlined text-outline text-xs" data-icon="close">close</span>
+</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-surface-container-high flex items-center justify-center cursor-pointer">
+<span className="material-symbols-outlined text-outline text-xs" data-icon="close">close</span>
+</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div className="border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+
+<div className="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">11:00</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">12:00</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">13:00</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">14:00</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">15:00</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline text-center">18:00<br/>(PM)</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-surface-container-high flex items-center justify-center">
+<span className="material-symbols-outlined text-outline text-xs" data-icon="close">close</span>
+</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-surface-container-high flex items-center justify-center">
+<span className="material-symbols-outlined text-outline text-xs" data-icon="close">close</span>
+</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div className="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">23:00</div>
+<div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div className="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+</div>
+</div>
+</div>
+
+<div className="mt-6 p-5 bg-primary-container/10 rounded-2xl flex items-start gap-4">
+<span className="material-symbols-outlined text-primary mt-0.5" data-icon="info">info</span>
+<div>
+<p className="text-sm font-bold text-primary mb-1">제출 전 확인해 주세요</p>
+<p className="text-xs text-on-surface-variant leading-relaxed">입력된 시간은 운영진의 학술 일정 및 스터디 배정에 중요한 자료로 활용됩니다.</p>
+</div>
+</div>
+</main>
+
+<div className="fixed bottom-24 left-6 right-6 z-40 max-w-[400px] mx-auto">
+<button className="w-full bg-gradient-to-r from-primary to-primary-container text-white py-4 rounded-xl flex items-center justify-center gap-2 shadow-[0_12px_32px_-4px_rgba(153,65,0,0.3)] active:scale-95 transition-all duration-200 group">
+<span className="material-symbols-outlined font-bold transition-transform group-hover:scale-110" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span className="font-headline font-bold">시간표 제출하기</span>
+</button>
+</div>
+
+<nav className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl fixed bottom-0 left-0 right-0 max-w-md mx-auto flex justify-around items-center px-4 pb-6 pt-2 z-50 rounded-t-3xl shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+<a className="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-150" href="#">
+<span className="material-symbols-outlined mb-1" data-icon="login">login</span>
+<span className="text-[10px] font-bold uppercase tracking-widest">Home</span>
+</a>
+<a className="flex flex-col items-center justify-center bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-2xl px-5 py-2 active:scale-90 duration-150" href="#">
+<span className="material-symbols-outlined mb-1" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span className="text-[10px] font-bold uppercase tracking-widest">Schedule</span>
+</a>
+<a className="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-150" href="#">
+<span className="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span className="text-[10px] font-bold uppercase tracking-widest">Admin</span>
+</a>
+</nav>

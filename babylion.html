@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-dim": "#b92902",
+              "surface-container-low": "#eef1f3",
+              "on-secondary-fixed": "#542900",
+              "inverse-primary": "#f77113",
+              "primary-fixed-dim": "#f06c0b",
+              "surface": "#f5f7f9",
+              "primary-fixed": "#ff7a23",
+              "secondary-container": "#ffc69d",
+              "on-primary-container": "#3f1700",
+              "primary": "#994100",
+              "on-tertiary-fixed-variant": "#614400",
+              "tertiary-fixed": "#febb28",
+              "surface-container": "#e5e9eb",
+              "surface-bright": "#f5f7f9",
+              "on-primary": "#fff0e9",
+              "surface-container-lowest": "#ffffff",
+              "background": "#f5f7f9",
+              "surface-tint": "#994100",
+              "surface-container-high": "#dfe3e6",
+              "error-container": "#f95630",
+              "error": "#b02500",
+              "tertiary": "#795500",
+              "on-tertiary-container": "#563b00",
+              "on-surface-variant": "#595c5e",
+              "secondary-fixed-dim": "#ffb379",
+              "on-primary-fixed-variant": "#4e1e00",
+              "secondary-fixed": "#ffc69d",
+              "outline-variant": "#abadaf",
+              "tertiary-fixed-dim": "#efad16",
+              "on-error-container": "#520c00",
+              "outline": "#747779",
+              "primary-dim": "#863800",
+              "on-secondary": "#fff0e7",
+              "surface-container-highest": "#d9dde0",
+              "on-secondary-fixed-variant": "#7e4000",
+              "on-tertiary": "#fff1de",
+              "tertiary-dim": "#694a00",
+              "surface-variant": "#d9dde0",
+              "on-background": "#2c2f31",
+              "tertiary-container": "#febb28",
+              "on-surface": "#2c2f31",
+              "on-secondary-container": "#703900",
+              "inverse-surface": "#0b0f10",
+              "inverse-on-surface": "#9a9d9f",
+              "on-error": "#ffefec",
+              "on-tertiary-fixed": "#3c2900",
+              "surface-dim": "#d0d5d8",
+              "primary-container": "#ff7a23",
+              "secondary": "#8e4900",
+              "secondary-dim": "#7c4000",
+              "on-primary-fixed": "#000000"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body max-w-md mx-auto min-h-screen relative pb-32">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-[0_4px_12px_rgba(153,65,0,0.08)] max-w-md mx-auto">
+<div class="flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-3">
+<button class="text-orange-600 active:scale-95 duration-200 transition-colors hover:bg-orange-50 p-1 rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-orange-600 font-plus-jakarta font-bold text-lg">환영합니다, 김멋사님!</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-orange-600" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6">
+<!-- Hero Instruction Section -->
+<section class="mb-8">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary-container/20 text-primary font-bold text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider">Babylion Mode</span>
+</div>
+<h2 class="font-headline text-2xl font-extrabold text-on-surface tracking-tight mb-2">활동 가능 시간 설정</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed">참석이 불가능한 시간을 터치해서 제외해 주세요. <br/>나머지 시간은 활동 가능 시간으로 제출됩니다.</p>
+</section>
+<!-- Time Grid Container -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
+<!-- Grid Header -->
+<div class="grid grid-cols-8 border-b border-surface-container">
+<div class="h-10 border-r border-surface-container"></div>
+<div class="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">월</div>
+<div class="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">화</div>
+<div class="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">수</div>
+<div class="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">목</div>
+<div class="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">금</div>
+<div class="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">토</div>
+<div class="flex items-center justify-center font-label text-[10px] font-bold text-on-surface-variant">일</div>
+</div>
+<!-- Scrollable Grid Body -->
+<div class="max-h-[500px] overflow-y-auto no-scrollbar">
+<div class="grid grid-cols-8">
+<!-- Dynamic Grid Generation logic placeholder -->
+<!-- Row 09:00 -->
+<div class="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">09:00</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<!-- Row 10:00 (Simulating some disabled states) -->
+<div class="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">10:00</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-surface-container-high flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-outline text-xs" data-icon="close">close</span>
+</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-surface-container-high flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-outline text-xs" data-icon="close">close</span>
+</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<div class="border-b border-surface-container-low h-10 bg-orange-50/50 hover:bg-orange-100 transition-colors cursor-pointer"></div>
+<!-- Repeated Rows for 11:00 - 23:00 (Visual simplification for the code) -->
+<div class="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">11:00</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">12:00</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">13:00</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">14:00</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">15:00</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline text-center">18:00<br/>(PM)</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-xs" data-icon="close">close</span>
+</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-xs" data-icon="close">close</span>
+</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+<div class="flex items-center justify-center border-r border-b border-surface-container-low h-10 text-[9px] font-medium text-outline">23:00</div>
+<div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-r border-b border-surface-container-low h-10 bg-orange-50/50"></div><div class="border-b border-surface-container-low h-10 bg-orange-50/50"></div>
+</div>
+</div>
+</div>
+<!-- Submission Section Info -->
+<div class="mt-6 p-5 bg-primary-container/10 rounded-2xl flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="info">info</span>
+<div>
+<p class="text-sm font-bold text-primary mb-1">제출 전 확인해 주세요</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">입력된 시간은 운영진의 학술 일정 및 스터디 배정에 중요한 자료로 활용됩니다.</p>
+</div>
+</div>
+</main>
+<!-- Sticky Action Button -->
+<div class="fixed bottom-24 left-6 right-6 z-40 max-w-[400px] mx-auto">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white py-4 rounded-xl flex items-center justify-center gap-2 shadow-[0_12px_32px_-4px_rgba(153,65,0,0.3)] active:scale-95 transition-all duration-200 group">
+<span class="material-symbols-outlined font-bold transition-transform group-hover:scale-110" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-headline font-bold">시간표 제출하기</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl fixed bottom-0 left-0 right-0 max-w-md mx-auto flex justify-around items-center px-4 pb-6 pt-2 z-50 rounded-t-3xl shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="login">login</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-2xl px-5 py-2 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Admin</span>
+</a>
+</nav>
+</body></html>

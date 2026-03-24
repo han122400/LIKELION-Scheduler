@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mutsa Scheduler - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons via CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-dim": "#b92902",
+              "surface-container-low": "#eef1f3",
+              "on-secondary-fixed": "#542900",
+              "inverse-primary": "#f77113",
+              "primary-fixed-dim": "#f06c0b",
+              "surface": "#f5f7f9",
+              "primary-fixed": "#ff7a23",
+              "secondary-container": "#ffc69d",
+              "on-primary-container": "#3f1700",
+              "primary": "#994100",
+              "on-tertiary-fixed-variant": "#614400",
+              "tertiary-fixed": "#febb28",
+              "surface-container": "#e5e9eb",
+              "surface-bright": "#f5f7f9",
+              "on-primary": "#fff0e9",
+              "surface-container-lowest": "#ffffff",
+              "background": "#f5f7f9",
+              "surface-tint": "#994100",
+              "surface-container-high": "#dfe3e6",
+              "error-container": "#f95630",
+              "error": "#b02500",
+              "tertiary": "#795500",
+              "on-tertiary-container": "#563b00",
+              "on-surface-variant": "#595c5e",
+              "secondary-fixed-dim": "#ffb379",
+              "on-primary-fixed-variant": "#4e1e00",
+              "secondary-fixed": "#ffc69d",
+              "outline-variant": "#abadaf",
+              "tertiary-fixed-dim": "#efad16",
+              "on-error-container": "#520c00",
+              "outline": "#747779",
+              "primary-dim": "#863800",
+              "on-secondary": "#fff0e7",
+              "surface-container-highest": "#d9dde0",
+              "on-secondary-fixed-variant": "#7e4000",
+              "on-tertiary": "#fff1de",
+              "tertiary-dim": "#694a00",
+              "surface-variant": "#d9dde0",
+              "on-background": "#2c2f31",
+              "tertiary-container": "#febb28",
+              "on-surface": "#2c2f31",
+              "on-secondary-container": "#703900",
+              "inverse-surface": "#0b0f10",
+              "inverse-on-surface": "#9a9d9f",
+              "on-error": "#ffefec",
+              "on-tertiary-fixed": "#3c2900",
+              "surface-dim": "#d0d5d8",
+              "primary-container": "#ff7a23",
+              "secondary": "#8e4900",
+              "secondary-dim": "#7c4000",
+              "on-primary-fixed": "#000000"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .heatmap-cell { aspect-ratio: 1 / 1; }
+        .chart-bar { transition: height 0.3s ease-in-out; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-[0_4px_12px_rgba(153,65,0,0.08)]">
+<div class="flex items-center justify-between px-6 py-4 max-w-md mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-500" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-plus-jakarta font-bold text-lg text-orange-600 dark:text-orange-500 tracking-tight">전체 일정 종합 대시보드</h1>
+</div>
+<span class="material-symbols-outlined text-slate-500" data-icon="calendar_today">calendar_today</span>
+</div>
+</header>
+<main class="max-w-md mx-auto pt-24 px-6 space-y-8">
+<!-- Summary Section: Top 3 Time Slots -->
+<section class="space-y-4">
+<div class="flex items-end justify-between px-1">
+<h2 class="text-on-surface font-bold text-xl">최적의 시간대 Top 3</h2>
+<span class="text-label-sm uppercase tracking-widest text-primary font-bold text-[10px]">Analytics</span>
+</div>
+<div class="grid gap-4">
+<!-- Rank 1 Card -->
+<div class="relative overflow-hidden bg-surface-container-lowest p-5 rounded-xl shadow-[0_12px_32px_-4px_rgba(153,65,0,0.08)] group border-l-4 border-primary">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-sm font-bold text-primary mb-1">1위 - 가장 선호됨</p>
+<h3 class="text-xl font-extrabold text-on-surface">금요일 19:00</h3>
+</div>
+<div class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-sm font-bold">
+                            25명 가능
+                        </div>
+</div>
+</div>
+<!-- Rank 2 & 3 (Asymmetric Grid) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-secondary">
+<p class="text-[10px] font-bold text-secondary mb-1">2위</p>
+<h4 class="text-md font-bold text-on-surface">토요일 14:00</h4>
+<p class="text-xs text-on-surface-variant mt-1">22명 참석 가능</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-tertiary">
+<p class="text-[10px] font-bold text-tertiary mb-1">3위</p>
+<h4 class="text-md font-bold text-on-surface">수요일 18:30</h4>
+<p class="text-xs text-on-surface-variant mt-1">19명 참석 가능</p>
+</div>
+</div>
+</div>
+</section>
+<!-- New Statistics Section -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<i class="w-5 h-5 text-orange-500" data-lucide="bar-chart-3"></i>
+<h2 class="text-on-surface font-bold text-xl">참석 통계</h2>
+</div>
+</div>
+<div class="grid gap-4">
+<!-- Bar Chart: Weekly Attendance -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border border-orange-100">
+<div class="flex items-center gap-2 mb-6">
+<i class="w-4 h-4 text-orange-500" data-lucide="calendar"></i>
+<h3 class="text-sm font-bold text-on-surface">요일별 평균 참석 가능 인원</h3>
+</div>
+<div class="flex items-end justify-between h-32 gap-2 px-1">
+<!-- Monday -->
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-orange-100 rounded-t-sm chart-bar" style="height: 45%;"></div>
+<span class="text-[10px] font-medium text-on-surface-variant">월</span>
+</div>
+<!-- Tuesday -->
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-orange-200 rounded-t-sm chart-bar" style="height: 55%;"></div>
+<span class="text-[10px] font-medium text-on-surface-variant">화</span>
+</div>
+<!-- Wednesday -->
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-orange-300 rounded-t-sm chart-bar" style="height: 70%;"></div>
+<span class="text-[10px] font-medium text-on-surface-variant">수</span>
+</div>
+<!-- Thursday -->
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-orange-200 rounded-t-sm chart-bar" style="height: 50%;"></div>
+<span class="text-[10px] font-medium text-on-surface-variant">목</span>
+</div>
+<!-- Friday -->
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-orange-500 rounded-t-sm chart-bar" style="height: 90%;"></div>
+<span class="text-[10px] font-bold text-orange-600">금</span>
+</div>
+<!-- Saturday -->
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-orange-400 rounded-t-sm chart-bar" style="height: 80%;"></div>
+<span class="text-[10px] font-medium text-on-surface-variant">토</span>
+</div>
+<!-- Sunday -->
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-orange-100 rounded-t-sm chart-bar" style="height: 30%;"></div>
+<span class="text-[10px] font-medium text-on-surface-variant">일</span>
+</div>
+</div>
+</div>
+<!-- Donut Chart: Time Slot Distribution -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border border-orange-100">
+<div class="flex items-center gap-2 mb-6">
+<i class="w-4 h-4 text-orange-500" data-lucide="pie-chart"></i>
+<h3 class="text-sm font-bold text-on-surface">시간대별 선호 비중</h3>
+</div>
+<div class="flex items-center justify-between">
+<!-- Donut Visualization (SVG) -->
+<div class="relative w-24 h-24">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-orange-100" cx="18" cy="18" fill="none" r="16" stroke-width="4"></circle>
+<!-- Evening (60%) -->
+<circle class="stroke-orange-500" cx="18" cy="18" fill="none" r="16" stroke-dasharray="60, 100" stroke-dashoffset="0" stroke-width="4"></circle>
+<!-- Afternoon (25%) -->
+<circle class="stroke-orange-300" cx="18" cy="18" fill="none" r="16" stroke-dasharray="25, 100" stroke-dashoffset="-60" stroke-width="4"></circle>
+<!-- Morning (15%) -->
+<circle class="stroke-orange-200" cx="18" cy="18" fill="none" r="16" stroke-dasharray="15, 100" stroke-dashoffset="-85" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-[10px] font-bold text-on-surface-variant">Peak</span>
+<span class="text-xs font-extrabold text-orange-600">저녁</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex flex-col gap-2 flex-1 ml-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-orange-500"></div>
+<span class="text-xs text-on-surface-variant">저녁 (18:00~)</span>
+</div>
+<span class="text-xs font-bold">60%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-orange-300"></div>
+<span class="text-xs text-on-surface-variant">오후 (12:00~)</span>
+</div>
+<span class="text-xs font-bold">25%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-orange-200"></div>
+<span class="text-xs text-on-surface-variant">오전 (~12:00)</span>
+</div>
+<span class="text-xs font-bold">15%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Heatmap Grid Section -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-on-surface font-bold text-xl">참석 가능 현황 (Heatmap)</h2>
+<div class="flex items-center gap-1">
+<div class="w-3 h-3 bg-orange-100 rounded-sm"></div>
+<div class="w-3 h-3 bg-orange-700 rounded-sm"></div>
+<span class="text-[10px] text-on-surface-variant ml-1">Density</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm">
+<!-- Day Labels -->
+<div class="grid grid-cols-8 gap-1 mb-2">
+<div class="w-8"></div>
+<div class="text-[10px] font-bold text-center text-on-surface-variant">월</div>
+<div class="text-[10px] font-bold text-center text-on-surface-variant">화</div>
+<div class="text-[10px] font-bold text-center text-on-surface-variant">수</div>
+<div class="text-[10px] font-bold text-center text-on-surface-variant">목</div>
+<div class="text-[10px] font-bold text-center text-on-surface-variant">금</div>
+<div class="text-[10px] font-bold text-center text-on-surface-variant text-primary">토</div>
+<div class="text-[10px] font-bold text-center text-on-surface-variant text-error">일</div>
+</div>
+<!-- Heatmap Grid (7 days x 15 slots) -->
+<div class="flex flex-col gap-1">
+<div class="grid grid-cols-8 gap-1 items-center">
+<div class="text-[9px] text-right pr-2 text-on-surface-variant">09:00</div>
+<div class="heatmap-cell bg-orange-50 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-100 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-200 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-50 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-300 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-100 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-50 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+</div>
+<div class="grid grid-cols-8 gap-1 items-center">
+<div class="text-[9px] text-right pr-2 text-on-surface-variant font-bold">19:00</div>
+<div class="heatmap-cell bg-orange-400 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-500 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-600 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-500 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-700 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer shadow-inner"></div>
+<div class="heatmap-cell bg-orange-400 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+<div class="heatmap-cell bg-orange-200 rounded-sm hover:ring-2 ring-primary transition-all cursor-pointer"></div>
+</div>
+<div class="grid grid-cols-8 gap-1 items-center opacity-60">
+<div class="text-[9px] text-right pr-2 text-on-surface-variant">21:00</div>
+<div class="heatmap-cell bg-orange-200 rounded-sm"></div>
+<div class="heatmap-cell bg-orange-300 rounded-sm"></div>
+<div class="heatmap-cell bg-orange-400 rounded-sm"></div>
+<div class="heatmap-cell bg-orange-300 rounded-sm"></div>
+<div class="heatmap-cell bg-orange-500 rounded-sm"></div>
+<div class="heatmap-cell bg-orange-200 rounded-sm"></div>
+<div class="heatmap-cell bg-orange-100 rounded-sm"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Visualization -->
+<section class="bg-primary text-on-primary p-6 rounded-2xl flex items-center justify-between overflow-hidden relative">
+<div class="relative z-10">
+<p class="text-sm font-medium opacity-80">전체 응답 인원</p>
+<h3 class="text-4xl font-extrabold mt-1 tracking-tighter">42 / 50</h3>
+<p class="text-[10px] mt-2 uppercase font-bold tracking-widest">Response rate 84%</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-20">
+<span class="material-symbols-outlined text-9xl" data-icon="dashboard">dashboard</span>
+</div>
+</section>
+</main>
+<!-- Bottom Sheet / Modal Mockup (Visible State) -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm z-[60] flex items-end justify-center">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-t-[2.5rem] p-8 shadow-2xl space-y-6">
+<div class="w-12 h-1.5 bg-surface-container-high rounded-full mx-auto mb-2"></div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-2xl font-bold text-on-surface">금요일 19:00</h3>
+<p class="text-on-surface-variant font-medium">참석 가능 여부 상세</p>
+</div>
+<div class="bg-orange-50 p-3 rounded-full">
+<span class="material-symbols-outlined text-orange-600" data-icon="group">group</span>
+</div>
+</div>
+<div class="space-y-6">
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-bold text-sm uppercase tracking-wider text-primary">Available (25)</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">Kim</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">Lee</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">Park</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">Choi</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">Jung</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">+20 more</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-sm" data-icon="cancel" data-weight="fill" style="font-variation-settings: 'FILL' 1;">cancel</span>
+<span class="font-bold text-sm uppercase tracking-wider text-error">Unavailable (17)</span>
+</div>
+<div class="flex flex-wrap gap-2 opacity-60">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">Kang</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">Yoon</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">Song</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface">Lim</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-bold shadow-lg active:scale-95 transition-transform">
+                상세 일정 확인하기
+            </button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl flex justify-around items-center px-4 pb-6 pt-2 z-50 rounded-t-3xl shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="login">login</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Schedule</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-2xl px-5 py-2 active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="dashboard" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Admin</span>
+</div>
+</nav>
+<script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body></html>
