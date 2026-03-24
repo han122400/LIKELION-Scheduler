@@ -242,9 +242,14 @@ export default function AdminPage() {
                 {averageByDay.map((d, idx) => {
                   const isHighest = Math.max(...averageByDay.map(x => x.percent)) === d.percent && d.percent > 0;
                   return (
-                    <div key={idx} className="flex-1 flex flex-col items-center gap-2">
-                      <div className={`w-full ${isHighest ? 'bg-orange-500' : 'bg-orange-200 opacity-60'} rounded-t-sm chart-bar`} style={{ height: `${Math.max(5, d.percent)}%` }}></div>
-                      <span className={`text-[10px] ${isHighest ? 'font-bold text-orange-600' : 'font-medium text-on-surface-variant'}`}>{d.day}</span>
+                    <div key={idx} className="flex-1 h-full flex flex-col justify-end items-center gap-1">
+                      <div className="w-full flex-1 flex flex-col justify-end">
+                        <div className={`w-full ${isHighest ? 'bg-orange-500' : 'bg-orange-200 opacity-60'} rounded-t-sm`} style={{ height: `${Math.max(5, d.percent)}%` }}></div>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <span className={`text-[10px] ${isHighest ? 'font-bold text-orange-600' : 'font-medium text-on-surface-variant'}`}>{d.day}</span>
+                        <span className={`text-[9px] ${isHighest ? 'font-bold text-orange-500' : 'text-slate-400'}`}>{Math.round(d.percent)}%</span>
+                      </div>
                     </div>
                   );
                 })}
